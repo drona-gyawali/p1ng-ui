@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P1NG: Net Speed Testing</title>
+    <meta name="description" content="Professional network performance analysis tool">
+    <link rel="icon" type="image/x-icon" href="../static/hexagon-nodes-bolt-solid.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="noise"></div>
+    <div class="container">
+        <div class="header">
+            <h1>P1NG</h1>
+            <p>Fast. Accurate. Professional Speed Testing</p>
+        </div>
+
+        <div class="main-grid">
+            <div class="info-panel">
+                <div class="info-title">
+                    <span><i class="fa-solid fa-globe"></i></span> Network Details
+                </div>
+                <div id="ipInfo">
+                    <div class="info-row">
+                        <span class="info-label">Loading...</span>
+                        <span class="info-value"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-panel">
+                <div class="speedometers">
+                    <div class="speedometer">
+                        <div class="speedometer-ring">
+                            <svg class="progress-ring" id="downloadProgress">
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#00ff87" />
+                                        <stop offset="100%" stop-color="#60efff" />
+                                    </linearGradient>
+                                </defs>
+                                <circle class="progress-track" cx="72" cy="72" r="70" />
+                                <circle class="progress-bar" cx="72" cy="72" r="70" />
+                            </svg>
+                            <div class="speedometer-bg">
+                                <div class="speedometer-inner">
+                                    <div class="speed-value" id="downloadSpeed">0</div>
+                                    <div class="speed-unit">Mbps</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speed-label">Download</div>
+                    </div>
+
+                    <div class="speedometer">
+                        <div class="speedometer-ring">
+                            <svg class="progress-ring" id="uploadProgress">
+                                <circle class="progress-track" cx="72" cy="72" r="70" />
+                                <circle class="progress-bar" cx="72" cy="72" r="70" />
+                            </svg>
+                            <div class="speedometer-bg">
+                                <div class="speedometer-inner">
+                                    <div class="speed-value" id="uploadSpeed">0</div>
+                                    <div class="speed-unit">Mbps</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speed-label">Upload</div>
+                    </div>
+
+                    <div class="speedometer">
+                        <div class="speedometer-ring">
+                            <svg class="progress-ring" id="pingProgress">
+                                <circle class="progress-track" cx="72" cy="72" r="70" />
+                                <circle class="progress-bar" cx="72" cy="72" r="70" />
+                            </svg>
+                            <div class="speedometer-bg">
+                                <div class="speedometer-inner">
+                                    <div class="speed-value" id="pingValue">0</div>
+                                    <div class="speed-unit">ms</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speed-label">Ping</div>
+                    </div>
+                </div>
+
+                <center>
+                    <button class="start-button" id="startButton">
+                        Start Test
+                    </button>
+                    <div class="test-status" id="testStatus"></div>
+                </center>
+            </div>
+        </div>
+
+        <div class="results-panel" id="resultsPanel">
+            <div class="result-card">
+                <div class="result-value" id="resultDownload">0 Mbps</div>
+                <div class="result-label">Download</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value" id="resultUpload">0 Mbps</div>
+                <div class="result-label">Upload</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value" id="resultPing">0 ms</div>
+                <div class="result-label">Ping</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value" id="resultJitter">0 ms</div>
+                <div class="result-label">Jitter</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value" id="resultPacketLoss">0%</div>
+                <div class="result-label">Packet Loss</div>
+            </div>
+        </div>
+
+        <div class="history-panel">
+            <div class="history-title">
+                <span><i class="fa-solid fa-wifi"></i></span> Test History
+            </div>
+            <div id="historyList">
+                <div class="history-empty">No tests performed yet</div>
+            </div>
+        </div>
+        <div class="footer">
+            P1NG &copy; <span id="year"></span> | All rights reserved  |
+            <a href="https://github.com/drona-gyawali" target="_blank"
+                style="margin-left: 10px; color: inherit;">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+
+        <script src="script.js" defer></script>
+</body>
+
+</html>
