@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://drona-gyawali.github.io/p1ng-ui/sitemap.xml
